@@ -37,11 +37,5 @@ df_sorted_city = df.sort_values(by=['city_len', 'shipping_city']).drop(columns='
 df['unit_price_rounded'] = (df['unit_price'] / 100).round() * 100
 df_sorted_price_band = df.sort_values(by=['unit_price_rounded', 'unit_price']).drop(columns='unit_price_rounded')
 
-# Sort by length of customer_name
-df.sort_values(by=df['customer_name'].apply(len))
-
-# Sort by last word in customer name
-df.sort_values(by=df['customer_name'].apply(lambda x: x.split()[-1]))
-
 # Sort using lambda and assign
 df.assign(city_length=df['shipping_city'].apply(len)).sort_values('city_length')
